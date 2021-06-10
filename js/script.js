@@ -41,12 +41,12 @@ while (computerListNums.length < 16) {
 console.log(computerListNums);
 
 while (userListNums.length < 100 - computerListNums.length) {
-    var userNum = parseInt(prompt("Inserisci un numero fra 1 e 84"));
+    var userNum = parseInt(prompt("Inserisci un numero fra 1 e 100"));
     if ( userListNums.length === 84) {
         alert('Complimenti, hai vinto!');
         break
     }
-    else if (!userListNums.includes(userNum) && !computerListNums.includes(userNum) && userNum > 0 && userNum <= 84) {
+    else if (!userListNums.includes(userNum) && !computerListNums.includes(userNum) && userNum > 0 && userNum <= 100) {
         userListNums.push(userNum);
         userScore = userListNums.length;
         console.log(userListNums);
