@@ -31,9 +31,24 @@ var userListNums = [];
 var userScore = 0;
 var resultText = '';
 var nextStep = true; // al posto del break nel terzo if del secondo while
+var max = 0;
+
+var difficolta =parseInt(prompt("scegli la tua difficolta: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
+
+switch (difficolta) {
+    case 0:
+        max = 100;
+        break
+    case 1:
+        max = 80;
+        break
+    case 2:
+        max = 50;
+}
+console.log('difficoltà scelta',max);
 
 while (computerListNums.length < 16) {
-    var computerNum = getRandomNum (1,100);
+    var computerNum = getRandomNum (1,max);
     if (!computerListNums.includes(computerNum)) {
         computerListNums.push(computerNum);        
     }
@@ -42,12 +57,13 @@ while (computerListNums.length < 16) {
 console.log(computerListNums);
 
 
-while (userListNums.length <= 100 - computerListNums.length && nextStep === true) {
-    var userNum = parseInt(prompt("Inserisci un numero fra 1 e 100"));
-    if ( userListNums.length === 84) {
+
+while (userListNums.length <= max - computerListNums.length && nextStep === true) {
+    var userNum = parseInt(prompt("Inserisci un numero fra 1 e " + max));
+    if ( userListNums.length === (max -computerListNums.length)) {
         alert('Complimenti, hai vinto!');
     }
-    else if (!userListNums.includes(userNum) && !computerListNums.includes(userNum) && userNum > 0 && userNum <= 100) {
+    else if (!userListNums.includes(userNum) && !computerListNums.includes(userNum) && userNum > 0 && userNum <= max) {
         userListNums.push(userNum);
         userScore = userListNums.length;
         console.log(userListNums);
@@ -58,7 +74,7 @@ while (userListNums.length <= 100 - computerListNums.length && nextStep === true
 }
 console.log('user score is',userScore);
 
-if ( userScore < 84) {
+if ( userScore < max - computerListNums.length) {
     result= 'Peccato hai perso <br/> Il tuo punteggio è ';
 } else {
     result = 'Complimenti hai visto col massimo punteggio: ';
