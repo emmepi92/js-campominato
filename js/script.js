@@ -30,6 +30,7 @@ var computerListNums = [];
 var userListNums = [];
 var userScore = 0;
 var resultText = '';
+var nextStep = true; // al posto del break nel terzo if del secondo while
 
 while (computerListNums.length < 16) {
     var computerNum = getRandomNum (1,100);
@@ -40,7 +41,8 @@ while (computerListNums.length < 16) {
 
 console.log(computerListNums);
 
-while (userListNums.length < 100 - computerListNums.length) {
+
+while (userListNums.length <= 100 - computerListNums.length && nextStep === true) {
     var userNum = parseInt(prompt("Inserisci un numero fra 1 e 100"));
     if ( userListNums.length === 84) {
         alert('Complimenti, hai vinto!');
@@ -51,7 +53,7 @@ while (userListNums.length < 100 - computerListNums.length) {
         console.log(userListNums);
     } else if (computerListNums.includes(userNum)) {
         alert('Peccato hai perso');
-        break
+        nextStep = false;
     }
 }
 console.log('user score is',userScore);
