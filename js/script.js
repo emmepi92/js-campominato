@@ -65,8 +65,9 @@ console.log(computerListNums.sort());
 while (userListNums.length < max - computerListNums.length && nextStep === true) {
     var userNum = parseInt(prompt("Inserisci un numero fra 1 e " + max));
 
-    // caso vincita escluso perchè non entra nel while se array dell user è uguale a max -16
-    // e se entra crea un loop, con userListNums.length <= max - computerListNums.length
+    // caso vincita escluso perchè non entra nel while se array dell user è uguale a (max-16)
+    // e se entra crea un loop, con userListNums.length <= max - computerListNums.length <- per includere il caso nel while
+    // si può provare con nextStap= false
     if (!userListNums.includes(userNum) && !computerListNums.includes(userNum) && userNum > 0 && userNum <= max) {
         userListNums.push(userNum);
         userScore = userListNums.length;
