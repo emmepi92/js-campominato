@@ -58,16 +58,16 @@ while (computerListNums.length < 16) {
     }
 }
 
-console.log(computerListNums);
+console.log(computerListNums.sort());
 
 
 
-while (userListNums.length <= max - computerListNums.length && nextStep === true) {
+while (userListNums.length < max - computerListNums.length && nextStep === true) {
     var userNum = parseInt(prompt("Inserisci un numero fra 1 e " + max));
-    if ( userListNums.length === (max -computerListNums.length)) {
-        alert('Complimenti, hai vinto!');
-    }
-    else if (!userListNums.includes(userNum) && !computerListNums.includes(userNum) && userNum > 0 && userNum <= max) {
+
+    // caso vincita escluso perchè non entra nel while se array dell user è uguale a max -16
+    // e se entra crea un loop, con userListNums.length <= max - computerListNums.length
+    if (!userListNums.includes(userNum) && !computerListNums.includes(userNum) && userNum > 0 && userNum <= max) {
         userListNums.push(userNum);
         userScore = userListNums.length;
         console.log(userListNums);
@@ -76,12 +76,14 @@ while (userListNums.length <= max - computerListNums.length && nextStep === true
         nextStep = false;
     }
 }
+
+// debug manuale, non iserire mai in numeri dell'array del computer
 console.log('user score is',userScore);
 
 if ( userScore < max - computerListNums.length) {
     result= 'Peccato hai perso <br/> Il tuo punteggio è ';
 } else {
-    result = 'Complimenti hai visto col massimo punteggio: ';
+    result = 'Complimenti hai vinto col massimo punteggio: ';
 }
 
 outputHtml.innerHTML = result + userScore;
