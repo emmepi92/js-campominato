@@ -34,6 +34,10 @@ var nextStep = true; // al posto del break nel terzo if del secondo while
 var max = 0;
 
 var difficolta =parseInt(prompt("scegli la tua difficolta: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
+while (difficolta !== 0 && difficolta !== 1 && difficolta !== 2) {
+    alert("inserisci solo 0, 1 o 2");
+    difficolta =parseInt(prompt("scegli la tua difficolta: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
+}
 
 switch (difficolta) {
     case 0:
