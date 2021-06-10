@@ -46,7 +46,7 @@ switch (difficolta) {
     case 1:
         max = 80;
         break
-    case 2:
+    default:
         max = 50;
 }
 console.log('difficoltà scelta',max);
