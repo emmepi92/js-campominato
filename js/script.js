@@ -49,7 +49,7 @@ switch (difficolta) {
     default:
         max = 50;
 }
-console.log('difficoltà scelta',max);
+console.log('difficoltà scelta',max); // debug
 
 while (computerListNums.length < 16) {
     var computerNum = getRandomNum (1,max);
@@ -60,7 +60,7 @@ while (computerListNums.length < 16) {
 
 
 // debug manuale, non iserire mai in numeri dell'array del computer
-console.log(computerListNums.sort());
+console.log('array pc nums',computerListNums.sort());
 
 while (userListNums.length < max - computerListNums.length && nextStep === true) {
     var userNum = parseInt(prompt("Inserisci un numero fra 1 e " + max));
@@ -77,7 +77,7 @@ while (userListNums.length < max - computerListNums.length && nextStep === true)
     if (!userListNums.includes(userNum) && !computerListNums.includes(userNum) && userNum > 0 && userNum <= max) {
         userListNums.push(userNum);
         userScore = userListNums.length;
-        console.log(userListNums);
+        console.log('array user nums',userListNums); //debug
     } else if (computerListNums.includes(userNum)) {
         alert('Hai perso!!');
         result= 'Peccato hai perso <br/> Il tuo punteggio è ';
@@ -85,7 +85,7 @@ while (userListNums.length < max - computerListNums.length && nextStep === true)
     }
 }
 
-console.log('user score is',userScore);
+console.log('user score is',userScore); // debug
 
 // caso di vincita analizzato fuori dal while
 if ( userScore === max - computerListNums.length) {
