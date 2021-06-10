@@ -29,6 +29,7 @@ var outputHtml = document.getElementById("result");
 var computerListNums = [];
 var userListNums = [];
 var userScore = 0;
+var resultText = '';
 
 while (computerListNums.length < 16) {
     var computerNum = getRandomNum (1,100);
@@ -56,8 +57,10 @@ while (userListNums.length < 100 - computerListNums.length) {
 }
 console.log('user score is',userScore);
 
-if ( userScore   < 84) {
-    outputHtml.innerHTML = 'Peccato hai perso <br/> Il tuo punteggio è ' + userScore;
+if ( userScore < 84) {
+    result= 'Peccato hai perso <br/> Il tuo punteggio è ';
 } else {
-    outputHtml.innerHTML = 'Complimenti hai visto col massimo punteggio: ' + userScore;
+    result = 'Complimenti hai visto col massimo punteggio: ';
 }
+
+outputHtml.innerHTML = result + userScore;
