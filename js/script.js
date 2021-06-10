@@ -30,7 +30,7 @@ var computerListNums = [];
 var userListNums = [];
 var userScore = 0;
 var resultText = '';
-var nextStep = true; // al posto del break nel terzo if del secondo while
+var nextStep = true; // flag nel while 
 var max = 0;
 
 var difficolta =parseInt(prompt("scegli la tua difficolta: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
@@ -58,9 +58,9 @@ while (computerListNums.length < 16) {
     }
 }
 
+
+// debug manuale, non iserire mai in numeri dell'array del computer
 console.log(computerListNums.sort());
-
-
 
 while (userListNums.length < max - computerListNums.length && nextStep === true) {
     var userNum = parseInt(prompt("Inserisci un numero fra 1 e " + max));
@@ -79,17 +79,16 @@ while (userListNums.length < max - computerListNums.length && nextStep === true)
         userScore = userListNums.length;
         console.log(userListNums);
     } else if (computerListNums.includes(userNum)) {
-        alert('Peccato hai perso');
+        alert('Hai perso!!');
+        result= 'Peccato hai perso <br/> Il tuo punteggio è ';
         nextStep = false;
     }
 }
 
-// debug manuale, non iserire mai in numeri dell'array del computer
 console.log('user score is',userScore);
 
-if ( userScore < max - computerListNums.length) {
-    result= 'Peccato hai perso <br/> Il tuo punteggio è ';
-} else {
+// caso di vincita analizzato fuori dal while
+if ( userScore === max - computerListNums.length) {
     alert('Hai vinto!!')
     result = 'Complimenti hai vinto col massimo punteggio: ';
 }
