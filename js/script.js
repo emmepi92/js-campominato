@@ -73,23 +73,40 @@ while (userListNums.length < max - computerListNums.length && nextStep === true)
     //     nextStep = false;
     // }
     // else 
-    if (!userListNums.includes(userNum) && !computerListNums.includes(userNum) && userNum > 0 && userNum <= max) {
-        userListNums.push(userNum);
-        userScore = userListNums.length;
-        console.log('array user nums',userListNums); //debug
-    } else if (computerListNums.includes(userNum)) {
-        alert('Hai perso!!');
-        result= 'Peccato hai perso <br/> Il tuo punteggio è ';
-        nextStep = false;
+
+    // ho diviso in 3 if le condizioni da verificare
+
+    if ( userNum > 0 && userNum <= max && !isNaN(userNum)) {
+
+        if (!userListNums.includes(userNum)) {
+
+            if (!computerListNums.includes(userNum)) {
+                userListNums.push(userNum);
+                userScore = userListNums.length;
+                console.log('array user nums',userListNums); //debug
+            } else {
+                alert('Ops Mina beccata')
+                nextStep = false;
+            }
+
+        } else {
+            alert('Non puoi inserire lo stesso numero')
+        }
+
+    } else {
+        alert('Devi inserire un numero fra 1 e ' + max);
     }
 }
 
 console.log('user score is',userScore); // debug
 
 // caso di vincita analizzato fuori dal while
-if ( userScore === max - computerListNums.length) {
+if (nextStep) {
     alert('Hai vinto!!')
     result = 'Complimenti hai vinto col massimo punteggio: ';
+} else {
+    alert('Hai perso!!');
+    result= 'Peccato hai perso <br/> Il tuo punteggio è ';
 }
 
 outputHtml.innerHTML = result + userScore;
