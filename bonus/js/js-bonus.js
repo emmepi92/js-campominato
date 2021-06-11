@@ -44,7 +44,7 @@ nextStepButton.addEventListener('click', function() {
     console.log('user num',userNum);
 
     if (userNum === level - bomb) {
-        alert('Hai vinto!!')
+        outputStillInGame.innerHTML = 'Complimenti, Hai vinto!!! <br/> Hai evitato tutte le bombe!!!';
         nextStepButton.disabled = true;
     } else {
         if (userNum > 0 && userNum <= level && !isNaN(userNum)) {
@@ -57,7 +57,7 @@ nextStepButton.addEventListener('click', function() {
                     outputStillInGame.innerHTML = "Bomba evitata!!!"
                     // console.log('array user nums',userListNums); //debug
                 } else {
-                    outputStillInGame.innerHTML = "Bomba Beccata :( "
+                    outputStillInGame.innerHTML = "Bomba Beccata :( <br/> Hai perso :("
                     nextStepButton.disabled = true;
                     document.getElementById("bomb-chosen").disabled = true;
                 }

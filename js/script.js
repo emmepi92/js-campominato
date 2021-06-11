@@ -10,15 +10,6 @@ La partita termina quando il giocatore inserisce un numero “vietato” o raggi
 massimo possibile di numeri consentiti.
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che 
 l’utente ha inserito un numero consentito.
-
-
-1. funzione che genera numero compreso fra 1 e 100, x 16 volte
-2. while computerListNums.length <16 -> 
-    a. if num is not in array computerListNums, push in array computerListNums.
-3. utente inserisce numUser in un prompt(ricorda parseInt) PER 100 - 16 (ovvero 100 - lunghezza array computerListNums).
-    a. if numUser is in userListNum -> prompt -> inserisci un altro numero
-    b. if numUser is in computerListNums -> user ha perso;
-4.
 */
 
 function getRandomNum (min,max) {
@@ -58,22 +49,22 @@ while (computerListNums.length < 16) {
     }
 }
 
-// debug manuale, non iserire mai in numeri dell'array del computer
+// debug 
 console.log('array pc nums',computerListNums.sort());
 
+// il caso di vincita è da gestire fuori il while, usare flag o lunghezza array dell'user
 while (userListNums.length < max - computerListNums.length && nextStep === true) {
     var userNum = parseInt(prompt("Inserisci un numero fra 1 e " + max));
 
-    // il caso di vincita è da gestire fuori
-
     // ho diviso in 3 if le condizioni da verificare
     // 1. se userNum è un numero, ed è compreso fra 0 e il max della difficoltà scelta
+    // 2. se userNum non è nell'array dei numeri già scelti
+    // 3. se userNem non è nell'array dei numeri del pc
+
     if ( userNum > 0 && userNum <= max && !isNaN(userNum)) {
 
-        // 2. se userNum non è nell'array dei numeri già scelti
         if (!userListNums.includes(userNum)) {
 
-            // 3. se userNem non è nell'array dei numeri del pc
             if (!computerListNums.includes(userNum)) {
                 userListNums.push(userNum);
                 userScore = userListNums.length;
@@ -94,7 +85,7 @@ while (userListNums.length < max - computerListNums.length && nextStep === true)
 
 console.log('user score is',userScore); // debug
 
-// caso di vincita analizzato fuori dal while
+// caso di vincita analizzato fuori dal while con il flag 
 if (nextStep) {
     alert('Hai vinto!!')
     result = 'Complimenti hai vinto col massimo punteggio: ';
