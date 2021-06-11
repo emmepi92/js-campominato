@@ -18,10 +18,9 @@ var numInputBomb = 1;
 var bomb = 1;
 var maxOfNums = 1;
 
+var settingInputButton = document.getElementById("setting-button")
 
-  // inizia qui
-nextStepButton.addEventListener('click', function() {
-
+settingInputButton.addEventListener('click', function(){
     bomb = bombHtmlInput.value;
     // console.log('chosen bombs', bomb); //debug
     bombHtmlInput.disabled = true;
@@ -29,6 +28,22 @@ nextStepButton.addEventListener('click', function() {
     maxOfNums = maxOfNumsHtmlInput.value;
     // console.log('chosen maxOfNums', maxOfNums); //debug    
     maxOfNumsHtmlInput.disabled = true;
+
+    document.getElementById("max").innerHTML ="Inserisci un numero compreso fra 1 e " + maxOfNums;
+    
+    document.getElementById("invisible").style.display ='block';
+    settingInputButton.style.display = 'none';
+
+
+
+})
+
+
+
+
+  // inizia qui
+nextStepButton.addEventListener('click', function() {
+
     
 
     while (bombList.length < bomb) {

@@ -19,3 +19,10 @@ button {
     margin-top: 8px;
     margin-bottom: 24px;
 }
+#max {
+    margin-bottom: 8px;
+}
+
+#invisible {
+    display: none;
+}
