@@ -58,7 +58,8 @@ nextStepButton.addEventListener('click', function() {
                     // console.log('array user nums',userListNums); //debug
                 } else {
                     outputBomb.innerHTML = "Bomba Beccata :( "
-                    document.getElementById("next-step").disabled = true;
+                    nextStepButton.disabled = true;
+                    document.getElementById("bomb-chosen").disabled = true;
                 }
     
             } else {
