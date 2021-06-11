@@ -16,10 +16,10 @@ var numChosen = 1;
 console.log('user num',numChosen);
 
 var bomb = 1;
-console.log('chosen bombs', bomb); //debug
+// console.log('chosen bombs', bomb); //debug
 
 var max = 1;
-console.log('chosen level', max); //debug
+// console.log('chosen level', max); //debug
 
 var nextStepButton = document.getElementById("next-step");
 
@@ -27,10 +27,10 @@ var nextStepButton = document.getElementById("next-step");
 nextStepButton.addEventListener('click', function() {
 
     bomb = document.getElementById("bombs").value;
-    console.log('chosen bombs', bomb); //debug
+    // console.log('chosen bombs', bomb); //debug
 
     max = document.getElementById("level").value;
-    console.log('chosen level', max); //debug    
+    // console.log('chosen level', max); //debug    
     
 
     while (computerListNums.length < bomb) {
@@ -39,7 +39,7 @@ nextStepButton.addEventListener('click', function() {
             computerListNums.push(computerNum);        
         }
     }    
-    console.log('array pc nums',computerListNums.sort()); // debug   
+    // console.log('array pc nums',computerListNums.sort()); // debug   
 
     numChosen = document.getElementById("bomb-chosen");
     var userNum = parseInt(numChosen.value);  
@@ -56,7 +56,7 @@ nextStepButton.addEventListener('click', function() {
                     userListNums.push(userNum);
                     userScore = userListNums.length;
                     outputBomb.innerHTML = "Bomba evitata!!!"
-                    console.log('array user nums',userListNums); //debug
+                    // console.log('array user nums',userListNums); //debug
                 } else {
                     alert('Ops Mina beccata')
                     outputBomb.innerHTML = "Bomba Beccata :( "
@@ -74,28 +74,9 @@ nextStepButton.addEventListener('click', function() {
 
     }
 
+    numChosen.value = ''; // reset
 
-    // if (userNum === max - bomb) {
-    //     alert('Hai vinto!!')
-    // } else {
-    //     alert('Hai perso!!');
-    // }
-
-    // (userListNums.length < max - computerListNums.length && nextStep === true)    
-        
-    
-    // console.log('user score is',userScore); 
-    
-    // if (userNum === max - bomb) {
-    //     alert('Hai vinto!!')
-    //     result = 'Complimenti hai vinto col massimo punteggio: ';
-    // } else {
-    //     alert('Hai perso!!');
-    //     result= 'Peccato hai perso <br/> Il tuo punteggio è ';
-    // }
-
-    outputHtml.innerHTML = userScore;
-    
+    outputHtml.innerHTML = userScore;   
 
 })
 
