@@ -29,17 +29,17 @@ var outputHtml = document.getElementById("result");
 var computerListNums = [];
 var userListNums = [];
 var userScore = 0;
-var resultText = '';
+var result = '';
 var nextStep = true; // flag nel while 
 var max = 0;
 
-var difficolta =parseInt(prompt("scegli la tua difficolta: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
-while (difficolta !== 0 && difficolta !== 1 && difficolta !== 2) {
+var level =parseInt(prompt("scegli la tua difficoltà: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
+while (level !== 0 && level !== 1 && level !== 2) {
     alert("inserisci solo 0, 1 o 2");
-    difficolta =parseInt(prompt("scegli la tua difficolta: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
+    level =parseInt(prompt("scegli la tua difficoltà: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
 }
 
-switch (difficolta) {
+switch (level) {
     case 0:
         max = 100;
         break
@@ -49,7 +49,7 @@ switch (difficolta) {
     default:
         max = 50;
 }
-console.log('difficoltà scelta',max); // debug
+console.log('chosen level',max); // debug
 
 while (computerListNums.length < 16) {
     var computerNum = getRandomNum (1,max);
@@ -57,7 +57,6 @@ while (computerListNums.length < 16) {
         computerListNums.push(computerNum);        
     }
 }
-
 
 // debug manuale, non iserire mai in numeri dell'array del computer
 console.log('array pc nums',computerListNums.sort());
