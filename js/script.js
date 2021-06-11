@@ -17,58 +17,58 @@ function getRandomNum (min,max) {
 }
 
 var outputHtml = document.getElementById("result");
-var computerListNums = [];
-var userListNums = [];
+var bombList = [];
+var userList = [];
 var userScore = 0; // si potrbbe usare direttamente la lunghezza dell'array
 var result = '';
 var nextStep = true; // flag nel while 
-var max = 0;
+var maxOfNums = 0;
 
-var level =parseInt(prompt("scegli la tua difficoltà: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
-while (level !== 0 && level !== 1 && level !== 2) {
+var difficolta =parseInt(prompt("scegli la tua difficoltà: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
+while (difficolta !== 0 && difficolta !== 1 && difficolta !== 2) {
     alert("inserisci solo 0, 1 o 2");
-    level =parseInt(prompt("scegli la tua difficoltà: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
+    difficolta =parseInt(prompt("scegli la tua difficoltà: 0 => tra 1 e 100, 1 => tra 1 e 80 o  2 => tra 1 e 50"));
 }
 
-switch (level) {
+switch (difficolta) {
     case 0:
-        max = 100;
+        maxOfNums = 100;
         break
     case 1:
-        max = 80;
+        maxOfNums = 80;
         break
     default:
-        max = 50;
+        maxOfNums = 50;
 }
-console.log('chosen level',max); // debug
+console.log('chosen difficolta',maxOfNums); // debug
 
-while (computerListNums.length < 16) {
-    var computerNum = getRandomNum (1,max);
-    if (!computerListNums.includes(computerNum)) {
-        computerListNums.push(computerNum);        
+while (bombList.length < 16) {
+    var bombNum = getRandomNum (1,maxOfNums);
+    if (!bombList.includes(bombNum)) {
+        bombList.push(bombNum);        
     }
 }
 
 // debug 
-console.log('array pc nums',computerListNums.sort());
+console.log('array pc nums',bombList.sort());
 
 // il caso di vincita è da gestire fuori il while, usare flag o lunghezza array dell'user
-while (userListNums.length < max - computerListNums.length && nextStep === true) {
-    var userNum = parseInt(prompt("Inserisci un numero fra 1 e " + max));
+while (userList.length < maxOfNums - bombList.length && nextStep === true) {
+    var userNum = parseInt(prompt("Inserisci un numero fra 1 e " + maxOfNums));
 
     // ho diviso in 3 if le condizioni da verificare
-    // 1. se userNum è un numero, ed è compreso fra 0 e il max della difficoltà scelta
+    // 1. se userNum è un numero, ed è compreso fra 0 e il maxOfNums della difficoltà scelta
     // 2. se userNum non è nell'array dei numeri già scelti
     // 3. se userNem non è nell'array dei numeri del pc
 
-    if ( userNum > 0 && userNum <= max && !isNaN(userNum)) {
+    if ( userNum > 0 && userNum <= maxOfNums && !isNaN(userNum)) {
 
-        if (!userListNums.includes(userNum)) {
+        if (!userList.includes(userNum)) {
 
-            if (!computerListNums.includes(userNum)) {
-                userListNums.push(userNum);
-                userScore = userListNums.length;
-                console.log('array user nums',userListNums); //debug
+            if (!bombList.includes(userNum)) {
+                userList.push(userNum);
+                userScore = userList.length;
+                console.log('array user nums',userList); //debug
             } else {
                 alert('Ops Mina beccata')
                 nextStep = false;
@@ -79,7 +79,7 @@ while (userListNums.length < max - computerListNums.length && nextStep === true)
         }
 
     } else {
-        alert('Devi inserire un numero fra 1 e ' + max);
+        alert('Devi inserire un numero fra 1 e ' + maxOfNums);
     }
 }
 
