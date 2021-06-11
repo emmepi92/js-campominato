@@ -59,7 +59,9 @@ nextStepButton.addEventListener('click', function() {
                     console.log('array user nums',userListNums); //debug
                 } else {
                     alert('Ops Mina beccata')
-                    outputBomb.innerHTML = "Bomba Beccata =("
+                    outputBomb.innerHTML = "Bomba Beccata :( "
+                    document.getElementById("next-step").disabled = true;
+
                 }
     
             } else {
