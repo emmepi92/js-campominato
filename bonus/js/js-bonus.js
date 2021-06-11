@@ -5,7 +5,7 @@ function getRandomNum (min,max) {
 }
 
 var outputHtml = document.getElementById("result");
-var outputBomb = document.getElementById("still-in-game");
+var outputStillInGame = document.getElementById("still-in-game");
 var nextStepButton = document.getElementById("next-step");
 var bombHtml = document.getElementById("bombs");
 var levelHtml = document.getElementById("level");
@@ -14,9 +14,9 @@ var userListNums = [];
 var userScore = 0;
 var result = '';
 
-var numChosen = 1;
+var numInputBomb = 1;
 var bomb = 1;
-var max = 1;
+var level = 1;
 
 
   // inizia qui
@@ -26,38 +26,38 @@ nextStepButton.addEventListener('click', function() {
     // console.log('chosen bombs', bomb); //debug
     bombHtml.disabled = true;
 
-    max = levelHtml.value;
-    // console.log('chosen level', max); //debug    
+    level = levelHtml.value;
+    // console.log('chosen level', level); //debug    
     levelHtml.disabled = true;
     
 
     while (computerListNums.length < bomb) {
-        var computerNum = getRandomNum (1,max);
+        var computerNum = getRandomNum (1,level);
         if (!computerListNums.includes(computerNum)) {
             computerListNums.push(computerNum);        
         }
     }    
     // console.log('array pc nums',computerListNums.sort()); // debug   
 
-    numChosen = document.getElementById("bomb-chosen");
-    var userNum = parseInt(numChosen.value);  
+    numInputBomb = document.getElementById("input-bomb");
+    var userNum = parseInt(numInputBomb.value);  
     console.log('user num',userNum);
 
-    if (userNum === max - bomb) {
+    if (userNum === level - bomb) {
         alert('Hai vinto!!')
         nextStepButton.disabled = true;
     } else {
-        if (userNum > 0 && userNum <= max && !isNaN(userNum)) {
+        if (userNum > 0 && userNum <= level && !isNaN(userNum)) {
     
             if (!userListNums.includes(userNum)) {
         
                 if (!computerListNums.includes(userNum)) {
                     userListNums.push(userNum);
                     userScore = userListNums.length;
-                    outputBomb.innerHTML = "Bomba evitata!!!"
+                    outputStillInGame.innerHTML = "Bomba evitata!!!"
                     // console.log('array user nums',userListNums); //debug
                 } else {
-                    outputBomb.innerHTML = "Bomba Beccata :( "
+                    outputStillInGame.innerHTML = "Bomba Beccata :( "
                     nextStepButton.disabled = true;
                     document.getElementById("bomb-chosen").disabled = true;
                 }
@@ -67,12 +67,12 @@ nextStepButton.addEventListener('click', function() {
             }
     
         } else {
-            alert('Devi inserire un numero fra 1 e ' + max);
+            alert('Devi inserire un numero fra 1 e ' + level);
         }
 
     }
 
-    numChosen.value = ''; // reset
+    numInputBomb.value = ''; // reset
 
     outputHtml.innerHTML = userScore;   
 
