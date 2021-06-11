@@ -7,6 +7,8 @@ function getRandomNum (min,max) {
 var outputHtml = document.getElementById("result");
 var outputBomb = document.getElementById("still-in-game");
 var nextStepButton = document.getElementById("next-step");
+var bombHtml = document.getElementById("bombs");
+var levelHtml = document.getElementById("level");
 var computerListNums = [];
 var userListNums = [];
 var userScore = 0;
@@ -20,11 +22,13 @@ var max = 1;
   // inizia qui
 nextStepButton.addEventListener('click', function() {
 
-    bomb = document.getElementById("bombs").value;
+    bomb = bombHtml.value;
     // console.log('chosen bombs', bomb); //debug
+    bombHtml.disabled = true;
 
-    max = document.getElementById("level").value;
+    max = levelHtml.value;
     // console.log('chosen level', max); //debug    
+    levelHtml.disabled = true;
     
 
     while (computerListNums.length < bomb) {
@@ -41,6 +45,7 @@ nextStepButton.addEventListener('click', function() {
 
     if (userNum === max - bomb) {
         alert('Hai vinto!!')
+        nextStepButton.disabled = true;
     } else {
         if (userNum > 0 && userNum <= max && !isNaN(userNum)) {
     
@@ -71,7 +76,3 @@ nextStepButton.addEventListener('click', function() {
     outputHtml.innerHTML = userScore;   
 
 })
-
-
-
-
