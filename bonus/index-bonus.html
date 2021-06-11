@@ -12,44 +12,50 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8 col-lg-6 mx-auto text-center bg-white rounded">
-
-                <h1>CampOBombatO</h1>
-                <h3>Difficoltà</h3>
-                <form>
-                    <label for="level">Scegli il campo</label>
-                    <select id="level" name="level">
-                        <option value="100">100</option>
-                        <option value="80">80</option>
-                        <option value="50">50</option>
-                    </select>
-                </form>
-            
-                <h3>Bombe</h3>
-                <form>
-                    <label for="bombs">Scegli le Bombe</label>
-                    <select id="bombs" name="bombs">
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="30">30</option>
-                    </select>
-                </form>
-                <button id="setting-button">Avanti</button>
                 
-                <div id="invisible">
-                    <h3>All'attaco</h3>
-                    <div id="max"></div>
+                <h1>CampOBombatO</h1>
+
+                <div class="to-hide">
+                    <h3>Difficoltà</h3>
                     <form>
-                        <input id="input-bomb" type="text" placeholder="Pronti,via!">
+                        <label for="level">Scegli il campo</label>
+                        <select id="level" name="level">
+                            <option value="100">100</option>
+                            <option value="80">80</option>
+                            <option value="50">50</option>
+                        </select>
                     </form>
+                
+                    <h3>Bombe</h3>
+                    <form>
+                        <label for="bombs">Scegli le Bombe</label>
+                        <select id="bombs" name="bombs">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                    </form>
+                    <button id="setting-button">Avanti</button>
+                </div>
+                                
+                <div id="invisible">
+                    <div class="to-hide">
+                        <h3>All'attaco</h3>
+                        <div id="max"></div>
+                        <form>
+                            <input id="input-bomb" type="text" placeholder="Pronti,via!">
+                        </form>
+
+                    </div>
     
                     <h2 id="still-in-game"></h2>
                     
-                    <div>
+                    <div class="pb-3">
                         Il tuo punteggio è 
                         <span id="result">0</span>
                     </div>
                 
-                    <button id="next-step" >Attacca</button>
+                    <button class="to-hide" id="next-step" >Attacca</button>
 
                 </div>
 

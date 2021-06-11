@@ -9,10 +9,12 @@ var outputStillInGame = document.getElementById("still-in-game");
 var nextStepButton = document.getElementById("next-step");
 var bombHtmlInput = document.getElementById("bombs");
 var maxOfNumsHtmlInput = document.getElementById("level");
+var toHide = document.getElementsByClassName("to-hide");
 var bombList = [];
 var userList = [];
 var userScore = 0;
 var result = '';
+var nextStep = true;
 
 var numInputBomb = 1;
 var bomb = 1;
@@ -34,17 +36,10 @@ settingInputButton.addEventListener('click', function(){
     document.getElementById("invisible").style.display ='block';
     settingInputButton.style.display = 'none';
 
-
-
 })
 
 
-
-
-  // inizia qui
-nextStepButton.addEventListener('click', function() {
-
-    
+nextStepButton.addEventListener('click', function() {    
 
     while (bombList.length < bomb) {
         var computerNum = getRandomNum (1,maxOfNums);
@@ -61,8 +56,9 @@ nextStepButton.addEventListener('click', function() {
     if (userNum === maxOfNums - bomb) {
         outputStillInGame.innerHTML = 'Complimenti, Hai vinto!!! <br/> Hai evitato tutte le bombe!!!';
         nextStepButton.disabled = true;
+        
     } else {
-        if (userNum > 0 && userNum <= maxOfNums && !isNaN(userNum)) {
+        if (userNum > 0 && userNum < maxOfNums && !isNaN(userNum)) {
     
             if (!userList.includes(userNum)) {
         
@@ -72,9 +68,16 @@ nextStepButton.addEventListener('click', function() {
                     outputStillInGame.innerHTML = "Bomba evitata!!!"
                     // console.log('array user nums',userList); //debug
                 } else {
+
+                    // da aggiustare con un flag e comtinuare fuori, ora cercello fuso
                     outputStillInGame.innerHTML = "Bomba Beccata :( <br/> Hai perso :("
                     nextStepButton.disabled = true;
-                    document.getElementById("bomb-chosen").disabled = true;
+                    document.getElementById("input-bomb").disabled = true;
+                    for (var i = 0; i < toHide.length; i++){    
+                        toHide[i].style.display = ("none");
+                    }
+                    outputStillInGame.style.padding = ("24px");
+
                 }
     
             } else {
