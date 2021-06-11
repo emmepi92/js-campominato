@@ -5,23 +5,17 @@ function getRandomNum (min,max) {
 }
 
 var outputHtml = document.getElementById("result");
+var outputBomb = document.getElementById("still-in-game");
+var nextStepButton = document.getElementById("next-step");
 var computerListNums = [];
 var userListNums = [];
 var userScore = 0;
 var result = '';
-var nextStep = true; 
-var outputBomb = document.getElementById("still-in-game");
 
 var numChosen = 1;
-console.log('user num',numChosen);
-
 var bomb = 1;
-// console.log('chosen bombs', bomb); //debug
-
 var max = 1;
-// console.log('chosen level', max); //debug
 
-var nextStepButton = document.getElementById("next-step");
 
   // inizia qui
 nextStepButton.addEventListener('click', function() {
@@ -58,10 +52,8 @@ nextStepButton.addEventListener('click', function() {
                     outputBomb.innerHTML = "Bomba evitata!!!"
                     // console.log('array user nums',userListNums); //debug
                 } else {
-                    alert('Ops Mina beccata')
                     outputBomb.innerHTML = "Bomba Beccata :( "
                     document.getElementById("next-step").disabled = true;
-
                 }
     
             } else {
