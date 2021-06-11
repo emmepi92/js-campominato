@@ -28,7 +28,7 @@ function getRandomNum (min,max) {
 var outputHtml = document.getElementById("result");
 var computerListNums = [];
 var userListNums = [];
-var userScore = 0;
+var userScore = 0; // si potrbbe usare direttamente la lunghezza dell'array
 var result = '';
 var nextStep = true; // flag nel while 
 var max = 0;
@@ -64,22 +64,16 @@ console.log('array pc nums',computerListNums.sort());
 while (userListNums.length < max - computerListNums.length && nextStep === true) {
     var userNum = parseInt(prompt("Inserisci un numero fra 1 e " + max));
 
-    // funziona anche questo if se aggiungiamo uguale alla condizione
-    // ovvero while (userListNums.length <= max - computerListNums.length && ...)
-    // ma fa inserire un numero in più anche se hai già vinto, è bisogna usare un flag per uscire dal loop
-
-    // if ( userListNums.length === (max -computerListNums.length)) {
-    //     alert('Complimenti, hai vinto!');
-    //     nextStep = false;
-    // }
-    // else 
+    // il caso di vincita è da gestire fuori
 
     // ho diviso in 3 if le condizioni da verificare
-
+    // 1. se userNum è un numero, ed è compreso fra 0 e il max della difficoltà scelta
     if ( userNum > 0 && userNum <= max && !isNaN(userNum)) {
 
+        // 2. se userNum non è nell'array dei numeri già scelti
         if (!userListNums.includes(userNum)) {
 
+            // 3. se userNem non è nell'array dei numeri del pc
             if (!computerListNums.includes(userNum)) {
                 userListNums.push(userNum);
                 userScore = userListNums.length;
