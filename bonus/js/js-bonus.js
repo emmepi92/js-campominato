@@ -2,23 +2,23 @@ function getRandomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var outputHtml = document.getElementById("result");
-var outputStillInGame = document.getElementById("still-in-game");
-var nextStepButton = document.getElementById("next-step");
 var bombHtmlInput = document.getElementById("bombs");
 var maxOfNumsHtmlInput = document.getElementById("level");
-var toHide = document.getElementsByClassName("to-hide");
+var outputStillInGame = document.getElementById("still-in-game");
+var outputHtml = document.getElementById("result");
+var nextStepButton = document.getElementById("next-step");
 var settingInputButton = document.getElementById("setting-button")
+var toHide = document.getElementsByClassName("to-hide");
 var invisible = document.getElementById("invisible");
+var numUserInput = document.getElementById("input-bomb");
 
 var bombList = [];
 var userList = [];
-var userScore = 0;
-var result = '';
-var gameOver = false;
-var nextStep = true;
-var bomb = 0;
+var bomb = 0; 
 var maxOfNums = 0;
+var userScore = 0;
+var nextStep = true;
+var gameOver = false;
 
 
 settingInputButton.addEventListener('click', function () {
@@ -40,16 +40,12 @@ settingInputButton.addEventListener('click', function () {
             bombList.push(randomBomb);
         }
     }
-    console.log(bombList.sort());
-
-
+    console.log(bombList.sort()); // debug
 })
-
 
 nextStepButton.addEventListener('click', function () {
 
-    numInputBomb = document.getElementById("input-bomb");
-    var userNum = parseInt(numInputBomb.value);
+    var userNum = parseInt(numUserInput.value);
 
     if (userNum > 0 && userNum <= maxOfNums && !isNaN(userNum)) {
 
@@ -99,8 +95,7 @@ nextStepButton.addEventListener('click', function () {
         }
     }
 
-    numInputBomb.value = ''; // reset
+    numUserInput.value = ''; // reset
 
     outputHtml.innerHTML = userScore;
-
 })
