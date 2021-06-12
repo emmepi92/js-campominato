@@ -10,17 +10,15 @@ var maxOfNumsHtmlInput = document.getElementById("level");
 var toHide = document.getElementsByClassName("to-hide");
 var settingInputButton = document.getElementById("setting-button")
 var invisible = document.getElementById("invisible");
+
 var bombList = [];
 var userList = [];
 var userScore = 0;
 var result = '';
 var gameOver = false;
 var nextStep = true;
-
-
-var numInputBomb = 1;
-var bomb = 1;
-var maxOfNums = 1;
+var bomb = 0;
+var maxOfNums = 0;
 
 
 settingInputButton.addEventListener('click', function () {
@@ -37,9 +35,9 @@ settingInputButton.addEventListener('click', function () {
     settingInputButton.style.display = 'none';
 
     while (bombList.length < bomb) {
-        var computerNum = getRandomNum(1, maxOfNums);
-        if (!bombList.includes(computerNum)) {
-            bombList.push(computerNum);
+        var randomBomb = getRandomNum(1, maxOfNums);
+        if (!bombList.includes(randomBomb)) {
+            bombList.push(randomBomb);
         }
     }
     console.log(bombList.sort());
@@ -63,7 +61,8 @@ nextStepButton.addEventListener('click', function () {
                 outputStillInGame.innerHTML = "Bomba evitata!!!"
 
                 if (userList.length === maxOfNums - bombList.length) {
-                    //hai vinto, bisogna inserirlo qui xke qui si aggiorna la lunghezza dell'array
+                    //hai vinto, bisogna inserirlo qui xke qui si aggiorna la 
+                    //lunghezza dell'array, se inserito prima, fa fare un 'click' a vuoto
                     gameOver = true;
                 }
 
@@ -85,16 +84,15 @@ nextStepButton.addEventListener('click', function () {
     // solo se hai vinto o perso, nascondi quello che non ti serve
     if (gameOver) {
 
+        //nascondi
         for (var i = 0; i < toHide.length; i++) {
             toHide[i].style.display = ("none");
         }
-
         outputStillInGame.style.padding = ("24px");
 
         if (nextStep) {
             //hai vinto
             outputStillInGame.innerHTML = 'Complimenti, Hai vinto!!! <br/> Hai evitato tutte le bombe!!!';
-            nextStepButton.disabled = true;
         } else {
             //hai perso
             outputStillInGame.innerHTML = "Bomba Beccata :( <br/> Hai perso :("
