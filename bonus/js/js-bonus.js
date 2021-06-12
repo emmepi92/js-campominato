@@ -30,6 +30,7 @@ settingInputButton.addEventListener('click', function () {
     maxOfNumsHtmlInput.disabled = true;
 
     document.getElementById("max").innerHTML = "Inserisci un numero compreso fra 1 e " + maxOfNums;
+    document.getElementById("win-if").innerHTML ='Se arrivi a  ' + (maxOfNums -  bomb) + ', hai vinto!';
 
     invisible.style.display = 'block';
     settingInputButton.style.display = 'none';
